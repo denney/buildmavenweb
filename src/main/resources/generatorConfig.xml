@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 在项目根目录下(pom.xml同级)打开命令行工具：mvn mybatis-generator:generate -->
+<generatorConfiguration>
+	<classPathEntry
+		location="D:\GBJ_EHSY\maven-repository\com\oracle\ojdbc7\7.0\ojdbc7-7.0.jar" />
+
+	<context id="baseTradeTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@121.199.39.199:1521:ehsy" userId="ehsy_gateway"
+			password="ehsy2015">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true" />
+		</javaTypeResolver>
+
+		<!-- 后台生成 -->
+		<javaModelGenerator targetPackage="com.spring.demo.mybatis.model"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		
+		<!-- Mapper映射 -->
+		<sqlMapGenerator targetPackage="mybatis"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- Mapper接口 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.spring.demo.mybatis.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table tableName="DESC_INFO">
+		</table>
+	</context>
+</generatorConfiguration>
